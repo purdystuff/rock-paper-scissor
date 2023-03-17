@@ -1,6 +1,8 @@
 const regE = /^rock|paper|scissors$/
 let compWins = 0;
 let playerWins = 0;
+let numRounds = 0;
+
 
 // create a function getComputerChoice to randomly return Text
 function getComputerChoice(){
@@ -22,13 +24,13 @@ function getComputerChoice(){
 //use toLowerCase
 
 function playerChoiceValidation(){
-    playerChoice = prompt("Can you beat the computer?? \nPlease enter:\nRock\nPaper\nScissors")
+    playerChoice = prompt("Can you beat the computer?? \n\nPlease enter:\nRock\nPaper\nScissors")
     playerChoice = playerChoice.toLowerCase()
     regTest = regE.test(playerChoice)
 
     while(!regTest){
         if(!regTest){
-            playerChoice = prompt("Please enter a valid entry:\nRock\nPaper\nScissors")
+            playerChoice = prompt("Please submit a valid entry:\n\nRock\nPaper\nScissors")
          }
         regTest = regE.test(playerChoice)
     }
@@ -78,18 +80,23 @@ function getWinner(playerChoice, compChoice){
 
 // create game () function to play a five round game use a for loop
 function game(){
-    for(let i = 0; i < 5; i++){
+    numRounds = prompt("Please enter the number of rounds that you want to play.")
+    numRounds = parseInt(numRounds);
+  
+    for(let i = 0; i < numRounds; i++){
         getWinner();
 
     }
+
+    return numRounds;
 }
 
 //who is the overall winner
 function overallWinner(){
     if (playerWins > compWins){
-        alert("Player One Wins!!")
+        alert("Player One Wins!! Congratulations!!\nPlayer One scored: " + playerWins + "\nThe computer scored: " + compWins)
     } else{
-        alert("The Computer Wins. Ha ha.")
+        alert("The Computer Wins. Ha ha." + "\nThe computer scored: " + compWins + "\nPlayer One scored: " + playerWins )
     }
 }
 
